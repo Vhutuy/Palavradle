@@ -11,7 +11,6 @@ function verificarTentativa() {
         encerrar(false, tentativas)
     }
 
-
     let palavra = document.getElementById("palavra").value;
 
     if (palavra.length < 5) {
@@ -35,14 +34,6 @@ function verificarTentativa() {
 
         let campoLetra = document.getElementById(campoLetraId);
         let letra = document.getElementById(letraId);
-
-        console.log(letraId)
-        console.log(letra)
-        console.log(palavra[i])
-        console.log(palavraAlvo[i])
-
-
-
 
         if (palavra[i].toUpperCase() == palavraAlvo[i].toUpperCase()) {
             letra.innerHTML = palavra[i].toUpperCase();
@@ -87,13 +78,15 @@ function verificarTentativa() {
 
 
     }
-
-
-    tentativas += 1;
+    
     //vitoria
     if (palavra == palavraAlvo) {
         encerrar(true, tentativas)
     }
+
+    tentativas += 1;
+    
+
 }
 
 // Função para alterar alfabeto
@@ -126,7 +119,7 @@ function encerrar(valor, tentativa) {
             espaco.innerHTML = "Você arrasou! de primeira, acho que ninguém esperarava essa."
         }
         if (tentativa == 2) {
-            espaco.innerHTML = "2º lugar e apenas o primeiro perdedor!"
+            espaco.innerHTML = "2º lugar é apenas o primeiro perdedor!"
         }
         if (tentativa == 3) {
             espaco.innerHTML = "na média, você nao conquistou nada mas já não se esperava nada! "
