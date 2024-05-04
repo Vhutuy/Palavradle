@@ -1,0 +1,69 @@
+body {
+    font-family: "Poppins", sans-serif;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+
+}
+
+h1 {
+    font-style: italic;
+    font-weight: 1000;
+    font-size: 60px;
+    margin-top: 0;
+}
+
+.caixa {
+    height: 70%;
+    width: 60%;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.caixa-alfabeto {
+    height: 40%;
+    width: 40%;
+    border-radius: 30px;
+    margin: 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.letra-conteiner {
+    height: 65px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.letra-conteiner-ultima {
+    height: 65px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.caixa-letra {
+    height: 60px;
+    width: 60px;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
