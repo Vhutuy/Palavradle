@@ -7,7 +7,7 @@ let tentativas = 1;
 // Função para comparar e exibir o resultado da tentativa
 function verificarTentativa() {
 
-    if (tentativas > 5) {
+    if (tentativas >= 5) {
         encerrar(false, tentativas)
     }
 
@@ -116,26 +116,26 @@ function encerrar(valor, tentativa) {
     if (valor == true) {
         box.style.display = "flex"
         if (tentativa == 1) {
-            espaco.innerHTML = "Você arrasou! de primeira, acho que ninguém esperarava essa."
+            espaco.innerHTML = "Você surpreendeu! À primeira vista, acredito que ninguém esperava por isso."
         }
         if (tentativa == 2) {
-            espaco.innerHTML = "2º lugar é apenas o primeiro perdedor!"
+            espaco.innerHTML = "Segundo lugar? É apenas o primeiro dos perdedores!"
         }
         if (tentativa == 3) {
-            espaco.innerHTML = "na média, você nao conquistou nada mas já não se esperava nada! "
+            espaco.innerHTML = "Na média, você não alcançou nada. Mas, francamente, não esperava-se nada de você."
         }
         if (tentativa == 4) {
-            espaco.innerHTML = "Já vi melhores, melhore!"
+            espaco.innerHTML = "Já vi desempenhos superiores. Aprimore-se!"
         }
         if (tentativa == 5) {
-            espaco.innerHTML = "Ufa! Sera que e dificil ou o problema e você?"
+            espaco.innerHTML = "Ufa! Será que é difícil ou o problema está em você?"
         }
 
         let vitorias = parseInt(localStorage.getItem('vitorias'))
         localStorage.setItem('vitorias', vitorias + 1);
     } else {
         box.style.display = "flex"
-        espaco.innerHTML = "Acabaram as tentativas você foi Patético e Esdrúxulo"
+        espaco.innerHTML = "5 tentativas e ainda assim não conseguiu? Parece que o problema e você."
 
         let derrotas = parseInt(localStorage.getItem('derrotas'))
         localStorage.setItem('derrotas', derrotas + 1);
