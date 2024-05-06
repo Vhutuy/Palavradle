@@ -1,6 +1,7 @@
 // Solicitar a palavra-alvo ao usuário
 let palavraAlvo = "raios";
 let tentativas = 1;
+let palavraCampo = document.getElementById("palavra");
 
 
 
@@ -147,3 +148,12 @@ function reiniciar() {
     window.location.reload();
 
 }
+
+
+palavraCampo.addEventListener("keypress", function(event) {
+
+    if(event.key == "Enter") {
+        verificarTentativa();
+    }
+
+});
