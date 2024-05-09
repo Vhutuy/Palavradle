@@ -75,41 +75,48 @@ function verificarTentativa() {
         }
 
         let vezesQueAparecePalavra = 0
-        if (palavra[i] == palavra[i - 1]) {
+        if (palavra[i] == palavra[0]) {
             vezesQueAparecePalavra++;
         }
-        if (palavra[i] == palavra[i - 2]) {
+        if (palavra[i] == palavra[1]) {
             vezesQueAparecePalavra++;
         }
-        if (palavra[i] == palavra[i - 3]) {
+        if (palavra[i] == palavra[2]) {
             vezesQueAparecePalavra++;
         }
-        if (palavra[i] == palavra[i - 4]) {
+        if (palavra[i] == palavra[3]) {
+            vezesQueAparecePalavra++;
+        }
+        if (palavra[i] == palavra[4]) {
             vezesQueAparecePalavra++;
         }
 
-        //Letras a Frente
-        let letasAFrente = false
-        let vezesQueApareceAFrente = 0
-        if (palavra[i] == palavra[i + 1]) {
-            vezesQueApareceAFrente++;
+        //vezes que ja apareceu na plavra
+        let vezesQeJaApareceu = 0
+        if (palavra[i] == palavra[i-1]) {
+            vezesQeJaApareceu ++;
         }
-        if (palavra[i] == palavra[i + 2]) {
-            vezesQueApareceAFrente++;
+        if (palavra[i] == palavra[i-2]) {
+            vezesQeJaApareceu ++;
         }
-        if (palavra[i] == palavra[i + 3]) {
-            vezesQueApareceAFrente++;
+        if (palavra[i] == palavra[i-3]) {
+            vezesQeJaApareceu ++;
         }
-        if (palavra[i] == palavra[i + 4]) {
-            vezesQueApareceAFrente++;
+        if (palavra[i] == palavra[i-4]) {
+            vezesQeJaApareceu ++;
         }
+        if (palavra[i] == palavra[i]) {
+            vezesQeJaApareceu ++;
+        }
+        console.log("====================================== tentativa: " + i + " " + palavra[i])
+        console.log("vezes que aparece palavra alvo: " + vezesQueAparecePalavraAlvo)
+        console.log("vezes que ja apareceu: " + vezesQeJaApareceu)
+        console.log("vezes que aparece palavra: " + vezesQueAparecePalavra)
 
-        if (vezesQueApareceAFrente > 0) {
-            letasAFrente = true
-        }
+    
 
         //CASO AMARELO
-        if (amarela == true && palavra[i].toUpperCase() != palavraAlvo[i].toUpperCase() && vezesQueAparecePalavra <= vezesQueAparecePalavraAlvo && letasAFrente == false) {
+        if (amarela == true && palavra[i].toUpperCase() != palavraAlvo[i].toUpperCase() && vezesQeJaApareceu < vezesQueAparecePalavraAlvo) {
             letra.innerHTML = palavra[i].toUpperCase();
             letra.style.color = "white";
             campoLetra.style.backgroundColor = "#EEF296"
