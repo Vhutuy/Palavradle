@@ -1,14 +1,14 @@
-// Solicitar a palavra-alvo ao usuário
+
 let palavraAlvo = "raios";
 let tentativas = 1;
 let palavraCampo = document.getElementById("palavra");
 
 
-
 // Função para comparar e exibir o resultado da tentativa
 function verificarTentativa() {
 
-    if (tentativas >= 5) {
+    //Verificação Inicial da Palavra digitada
+    if (tentativas > 5) {
         encerrar(false, tentativas)
     }
 
@@ -24,10 +24,15 @@ function verificarTentativa() {
         return
     }
 
+    if (palavra.includes("ç") || palavra.includes("Ç")) {
+        alert("Evite o uso de Ç")
+        return
+    }
+
     let conteinerTentativaId = "container-Tentativa" + tentativas
     let conteinerTentativa = document.getElementById(conteinerTentativaId).style.display = "flex"
 
-
+    //Inicio do for para cada letra e sua definição
     for (let i = 0; i < 5; i++) {
 
         let campoLetraId = "caixaTentativa" + tentativas + "Espaco" + (i + 1);
@@ -36,58 +41,97 @@ function verificarTentativa() {
         let campoLetra = document.getElementById(campoLetraId);
         let letra = document.getElementById(letraId);
 
+        // CASO VERDE
         if (palavra[i].toUpperCase() == palavraAlvo[i].toUpperCase()) {
             letra.innerHTML = palavra[i].toUpperCase();
             letra.style.color = "white";
-            campoLetra.style.backgroundColor = "#9ADE7B"
-            alterarAlfabeto(palavra[i], "#9ADE7B", "white", 1)
+            campoLetra.style.backgroundColor = "#9ADE7B";
+            alterarAlfabeto(palavra[i], "#9ADE7B", "white", 1);
+            continue;
         }
 
-
+        //CASO AMARELO
         let amarela = false
+        let vezesQueAparecePalavraAlvo = 0;
         if (palavra[i] == palavraAlvo[0]) {
-            amarela = true
+            amarela = true;
+            vezesQueAparecePalavraAlvo++;
         }
         if (palavra[i] == palavraAlvo[1]) {
-            amarela = true
+            amarela = true;
+            vezesQueAparecePalavraAlvo++;
         }
         if (palavra[i] == palavraAlvo[2]) {
-            amarela = true
+            amarela = true;
+            vezesQueAparecePalavraAlvo++;
         }
         if (palavra[i] == palavraAlvo[3]) {
-            amarela = true
+            amarela = true;
+            vezesQueAparecePalavraAlvo++;
         }
         if (palavra[i] == palavraAlvo[4]) {
-            amarela = true
+            amarela = true;
+            vezesQueAparecePalavraAlvo++;
         }
 
-        if (amarela == true && palavra[i].toUpperCase() != palavraAlvo[i].toUpperCase()) {
+        let vezesQueAparecePalavra = 0
+        if (palavra[i] == palavra[i - 1]) {
+            vezesQueAparecePalavra++;
+        }
+        if (palavra[i] == palavra[i - 2]) {
+            vezesQueAparecePalavra++;
+        }
+        if (palavra[i] == palavra[i - 3]) {
+            vezesQueAparecePalavra++;
+        }
+        if (palavra[i] == palavra[i - 4]) {
+            vezesQueAparecePalavra++;
+        }
+
+        //Letras a Frente
+        let letasAFrente = false
+        let vezesQueApareceAFrente = 0
+        if (palavra[i] == palavra[i + 1]) {
+            vezesQueApareceAFrente++;
+        }
+        if (palavra[i] == palavra[i + 2]) {
+            vezesQueApareceAFrente++;
+        }
+        if (palavra[i] == palavra[i + 3]) {
+            vezesQueApareceAFrente++;
+        }
+        if (palavra[i] == palavra[i + 4]) {
+            vezesQueApareceAFrente++;
+        }
+
+        if (vezesQueApareceAFrente > 0) {
+            letasAFrente = true
+        }
+
+        //CASO AMARELO
+        if (amarela == true && palavra[i].toUpperCase() != palavraAlvo[i].toUpperCase() && vezesQueAparecePalavra <= vezesQueAparecePalavraAlvo && letasAFrente == false) {
             letra.innerHTML = palavra[i].toUpperCase();
             letra.style.color = "white";
             campoLetra.style.backgroundColor = "#EEF296"
             alterarAlfabeto(palavra[i], "#EEF296", "white", 1)
+            continue;
         }
 
-        if (amarela == false) {
+        //CASO CINZA
+        if (amarela == false || vezesQueAparecePalavra >= vezesQueAparecePalavraAlvo || letasAFrente == true) {
             letra.innerHTML = palavra[i].toUpperCase();
             letra.style.color = "#333333";
             campoLetra.style.backgroundColor = "gray"
             campoLetra.style.opacity = "0.6"
             alterarAlfabeto(palavra[i], "#333333", "gray", 0.6)
         }
-
-
-
     }
-    
+
     //vitoria
     if (palavra == palavraAlvo) {
         encerrar(true, tentativas)
     }
-
     tentativas += 1;
-    
-
 }
 
 // Função para alterar alfabeto
@@ -98,8 +142,6 @@ function alterarAlfabeto(letra, cor, corfonte, opacidade) {
     caixaLetra.style.backgroundColor = cor;
     caixaLetra.style.color = corfonte;
     caixaLetra.style.opacity = opacidade;
-
-
 }
 
 // Função para encerrar o jogo
@@ -142,18 +184,19 @@ function encerrar(valor, tentativa) {
         localStorage.setItem('derrotas', derrotas + 1);
     }
 }
-
+// Função para Reiniciar o jogo
 function reiniciar() {
 
     window.location.reload();
 
 }
 
+//Apertar Enter
+let campo = document.getElementById("palavra")
 
-palavraCampo.addEventListener("keypress", function(event) {
+campo.addEventListener("keypress", function(event) {
 
     if(event.key == "Enter") {
         verificarTentativa();
     }
-
 });
