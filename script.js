@@ -229,26 +229,26 @@ function encerrar(valor, tentativa) {
     if (valor == true) {
         box.style.display = "flex"
         if (tentativa == 1) {
-            espaco.innerHTML = "A palavra era: " + palavraAlvo + " Você surpreendeu! À primeira vista, acredito que ninguém esperava por isso."
+            espaco.innerHTML = "A palavra era: " + "-> " + palavraAlvo + " <-" + "<br>" + "Você surpreendeu! À primeira vista, acredito que ninguém esperava por isso."
         }
         if (tentativa == 2) {
-            espaco.innerHTML = "A palavra era: " + palavraAlvo + " Segundo lugar? É apenas o primeiro dos perdedores!"
+            espaco.innerHTML = "A palavra era: " + "-> " + palavraAlvo + " <-" + "<br>" + "Segundo lugar? É apenas o primeiro dos perdedores!"
         }
         if (tentativa == 3) {
-            espaco.innerHTML = "A palavra era: " + palavraAlvo + "Na média, você não alcançou nada. Mas, francamente, não esperava-se nada de você."
+            espaco.innerHTML = "A palavra era: " + "-> " + palavraAlvo + " <-" + "<br>" + "Na média, você não alcançou nada. Mas, francamente, não esperava-se nada de você."
         }
         if (tentativa == 4) {
-            espaco.innerHTML = "A palavra era: " + palavraAlvo + " Já vi desempenhos superiores. Aprimore-se!"
+            espaco.innerHTML = "A palavra era: " + "-> " + palavraAlvo + " <-" + "<br>" + "Já vi desempenhos superiores. Aprimore-se!"
         }
         if (tentativa == 5) {
-            espaco.innerHTML = "A palavra era: " + palavraAlvo + " Ufa! Será que é difícil ou o problema está em você?"
+            espaco.innerHTML = "A palavra era: " + "-> " + palavraAlvo + " <-" + "<br>" + "Ufa! Será que é difícil ou o problema está em você?"
         }
 
         let vitorias = parseInt(localStorage.getItem('vitorias'))
         localStorage.setItem('vitorias', vitorias + 1);
     } else {
         box.style.display = "flex"
-        espaco.innerHTML = "5 tentativas e ainda assim não conseguiu? Parece que o problema e você."
+        espaco.innerHTML = "A palavra era: " + "-> " + palavraAlvo + " <-" + "<br>" + "5 tentativas e ainda assim não conseguiu? Patético! Parece que o problema é você."
 
         let derrotas = parseInt(localStorage.getItem('derrotas'))
         localStorage.setItem('derrotas', derrotas + 1);
